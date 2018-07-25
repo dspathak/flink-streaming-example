@@ -70,6 +70,7 @@ public class DebAppCEPKafka_Alternate {
 		
 		env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 		env.getConfig().setAutoWatermarkInterval(WATERMARK_GENERATION_FREQUENCY_MILLIS);
+		env.enableCheckpointing(1000);
 		
 		ParameterTool parameters = ParameterTool.fromArgs(args);
 		final List<String> TENANTIDS = parseTenantIds(parameters.get("tenantIds", ""));
